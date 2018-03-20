@@ -6,11 +6,12 @@
 //1. Create a web server
 var http = require('http');
 
-http.createServer(function (request, response) {
+http.createServer((request, response) => {
     response.writeHead(200, {'Content-Type': 'text/html'});
     response.write('Hello World!\n');
     response.end();
 }).listen(8080);
+console.log('http server has connected.');
 
 //2. Handle HTTP route GET / AND POST / i.e. Home
     //if url == "/" && GET
