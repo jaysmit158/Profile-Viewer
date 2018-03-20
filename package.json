@@ -1,0 +1,19 @@
+{
+  "name": "profile_view",
+  "version": "0.0.1",
+  "description": "Profile Viewer for Teamtreehouse",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaysmit158/Profile-Viewer.git"
+  },
+  "author": "Jordan Smith",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jaysmit158/Profile-Viewer/issues"
+  },
+  "homepage": "https://github.com/jaysmit158/Profile-Viewer#readme"
+}
