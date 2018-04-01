@@ -13,13 +13,13 @@ http.createServer((request, response) => {
 console.log('http server has connected.');
 
 //2. Handle HTTP route GET / AND POST / i.e. Home
-  function homeRoute(request,response) {
+  function homeRoute(request, response) {
 
     //if url == "/" && GET
     if (request.url === "/") {
           //show search
     
-    response.writeHead(200, {'Content-Type': 'text/html'});
+    response.writeHead(200, {'Content-Type': 'text/plain'});
     response.write("Header\n");
     response.write("Search\n");
     response.end("Footer\n");
@@ -31,12 +31,17 @@ console.log('http server has connected.');
   }
 
 //3. Handle HTTP route GET /:username ie. /chalkers
+  function userRoute(request, response) {
   //if url == "/...."
+  var username = request.url.replace("/", "");
+  if (username.length > 0) {
     //get json from Treehouse
       //on "end"
         //show profile
       //on "error"
         //show error
+      }
+  }
 
 //4. Function that handles the reading of files and merge in value
     //read from file and get string
