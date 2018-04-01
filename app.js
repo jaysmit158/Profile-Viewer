@@ -7,17 +7,28 @@
 var http = require('http');
 
 http.createServer((request, response) => {
-    response.writeHead(200, {'Content-Type': 'text/html'});
-    response.write('Hello World!\n');
-    response.end();
+  homeRoute(request,response);
+    
 }).listen(8080);
 console.log('http server has connected.');
 
 //2. Handle HTTP route GET / AND POST / i.e. Home
+  function homeRoute(request,response) {
+
     //if url == "/" && GET
-      //show search
+    if (request.url === "/") {
+          //show search
+    
+    response.writeHead(200, {'Content-Type': 'text/html'});
+    response.write("Header\n");
+    response.write("Search\n");
+    response.end("Footer\n");
+  }
     // if url == "/" && POST
       //redirect to /:username
+
+
+  }
 
 //3. Handle HTTP route GET /:username ie. /chalkers
   //if url == "/...."
