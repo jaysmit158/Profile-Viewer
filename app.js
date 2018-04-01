@@ -19,7 +19,7 @@ console.log('http server has connected.');
     // if url == "/" && POST
       //redirect to /:username
 
-//3. Handle HTTP route GET /:usernmae ie. /chalkers
+//3. Handle HTTP route GET /:username ie. /chalkers
   //if url == "/...."
     //get json from Treehouse
       //on "end"
