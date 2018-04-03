@@ -38,12 +38,12 @@ var studentProfile = new Profile("chalkers");
     //Store the values we need
     var values = {
       avatarUrl: profileJSON.gravatar_url,
-      username: profileJSON.profilename,
+      username: profileJSON.profile_name,
       badges: profileJSON.badges.length,
-      javascriptPoints: profileJSON.points.Javascript  
+      javascriptPoints: profileJSON.points.JavaScript  
     }
     //Simple Response
-    response.write(values.username + " has " + values.badges + "badges.\n");
+    response.write(values.username + " has " + values.badges + " Total Badges and " + values.javascriptPoints + " Total Javascript Points.\n");
       response.end("Footer\n");
     });
     //on "error"
