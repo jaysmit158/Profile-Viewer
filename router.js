@@ -1,3 +1,7 @@
+var Profile = require("./profile.js");
+
+
+var studentProfile = new Profile("chalkers");
 //2. Handle HTTP route GET / AND POST / i.e. Home
   function home(request, response) {
 
@@ -23,13 +27,20 @@
   if (username.length > 0) {
     response.writeHead(200, {'Content-Type': 'text/plain'});
     response.write("Header\n");
+
+    //get json from Treehouse
+    var studentProfile = new Profile("chalkers");
+
+    //on "end"
+    studentProfile.on("end",);
+        //show profile
+    //on "error"
+    studentProfile.on("error",);
+        //show error
     response.write(username + "\n");
     response.end("Footer\n");
-    //get json from Treehouse
-      //on "end"
-        //show profile
-      //on "error"
-        //show error
+    
+      
       }
   }
 
