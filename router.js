@@ -29,14 +29,17 @@ var studentProfile = new Profile("chalkers");
     response.write("Header\n");
 
     //get json from Treehouse
-    var studentProfile = new Profile("chalkers");
+    var studentProfile = new Profile(username);
 
     //on "end"
-    studentProfile.on("end",);
-        //show profile
+    studentProfile.on("end", function(profileJSON) {
+    //show profile
+    });
     //on "error"
-    studentProfile.on("error",);
-        //show error
+    studentProfile.on("error", function(error) {
+    //show error
+    });
+        
     response.write(username + "\n");
     response.end("Footer\n");
     
