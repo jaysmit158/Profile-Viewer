@@ -34,6 +34,15 @@ var studentProfile = new Profile("chalkers");
     //on "end"
     studentProfile.on("end", function(profileJSON) {
     //show profile
+
+
+    //Store the values we need
+    var values = {
+      avatarUrl: profileJSON.gravatar_url,
+      username: profileJSON.profilename,
+      badges: profileJSON.badges.length,
+      javascriptPoints: profileJSON.points.Javascript  
+    }
     });
     //on "error"
     studentProfile.on("error", function(error) {
