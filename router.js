@@ -13,6 +13,7 @@ function home(request, response) {
     //show search
 
     response.writeHead(200, commonHeaders);
+    renderer.view("header");
     response.write("Header\n");
     response.write("Search\n");
     response.end("Footer\n");
