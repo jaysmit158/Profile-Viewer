@@ -2,14 +2,16 @@ var fs = require("fs");
 
 function view(templateName, values, response) {
 	//Read from the template file
-	fs.readFile('/views/', function(err,data){
-		if (err) throw err;
+	fs.readFile('/views/' + templateName + '.html', function(error, fileContents) {
+		if (error) throw error;
 
 	//Insert values in to the content
 	//Write out to the response
-	console.log(data);
+	response.write(fileContents);
 	});
 
 
 	
 }
+
+module.exports.views = views;
