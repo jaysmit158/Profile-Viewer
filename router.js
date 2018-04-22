@@ -3,27 +3,27 @@ var Profile = require("./profile.js");
 
 var studentProfile = new Profile("chalkers");
 
-var commonHeaders = {'Content-Type': 'text/html'};
+var commonHeaders = { 'Content-Type': 'text/html' };
 //2. Handle HTTP route GET / AND POST / i.e. Home
-  function home(request, response) {
+function home(request, response) {
 
-    //if url == "/" && GET
-    if (request.url === "/") {
-          //show search
-    
+  //if url == "/" && GET
+  if (request.url === "/") {
+    //show search
+
     response.writeHead(200, commonHeaders);
     response.write("Header\n");
     response.write("Search\n");
     response.end("Footer\n");
   }
-    // if url == "/" && POST
-      //redirect to /:username
+  // if url == "/" && POST
+  //redirect to /:username
 
 
-  }
+}
 
 //3. Handle HTTP route GET /:username ie. /chalkers
-  function user(request, response) {
+function user(request, response) {
   //if url == "/...."
   var username = request.url.replace("/", "");
   if (username.length > 0) {
@@ -35,30 +35,30 @@ var commonHeaders = {'Content-Type': 'text/html'};
 
     //on "end"
     studentProfile.on("end", function(profileJSON) {
-    //show profile
-    
-    //Store the values we need
-    var values = {
-      avatarUrl: profileJSON.gravatar_url,
-      username: profileJSON.profile_name,
-      badges: profileJSON.badges.length,
-      javascriptPoints: profileJSON.points.JavaScript  
-    }
-    //Simple Response
-    response.write("User " + values.username + " has " + values.badges + " Total Badges and " + values.javascriptPoints + " Total Javascript Points.\n");
+      //show profile
+
+      //Store the values we need
+      var values = {
+          avatarUrl: profileJSON.gravatar_url,
+          username: profileJSON.profile_name,
+          badges: profileJSON.badges.length,
+          javascriptPoints: profileJSON.points.JavaScript
+        }
+        //Simple Response
+      response.write("User " + values.username + " has " + values.badges + " Total Badges and " + values.javascriptPoints + " Total Javascript Points.\n");
       response.end("Footer\n");
     });
     //on "error"
     studentProfile.on("error", function(error) {
-    //show error
+      //show error
       response.write(error.message + "\n");
       response.end("Footer\n");
     });
-        
-    
-      }
+
+
   }
+}
 
 
-  module.exports.home = home;
-  module.exports.user = user;
+module.exports.home = home;
+module.exports.user = user;
