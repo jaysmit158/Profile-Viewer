@@ -2,6 +2,8 @@ var Profile = require("./profile.js");
 
 
 var studentProfile = new Profile("chalkers");
+
+var commonHeaders = {'Content-Type': 'text/html'};
 //2. Handle HTTP route GET / AND POST / i.e. Home
   function home(request, response) {
 
@@ -9,7 +11,7 @@ var studentProfile = new Profile("chalkers");
     if (request.url === "/") {
           //show search
     
-    response.writeHead(200, {'Content-Type': 'text/plain'});
+    response.writeHead(200, commonHeaders);
     response.write("Header\n");
     response.write("Search\n");
     response.end("Footer\n");
@@ -25,7 +27,7 @@ var studentProfile = new Profile("chalkers");
   //if url == "/...."
   var username = request.url.replace("/", "");
   if (username.length > 0) {
-    response.writeHead(200, {'Content-Type': 'text/plain'});
+    response.writeHead(200, commonHeaders);
     response.write("Header\n");
 
     //get json from Treehouse
@@ -43,12 +45,13 @@ var studentProfile = new Profile("chalkers");
       javascriptPoints: profileJSON.points.JavaScript  
     }
     //Simple Response
-    response.write(values.username + " has " + values.badges + " Total Badges and " + values.javascriptPoints + " Total Javascript Points.\n");
+    response.write("User " + values.username + " has " + values.badges + " Total Badges and " + values.javascriptPoints + " Total Javascript Points.\n");
       response.end("Footer\n");
     });
     //on "error"
     studentProfile.on("error", function(error) {
     //show error
+      response.write(error.message + "\n");
       response.end("Footer\n");
     });
         
