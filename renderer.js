@@ -14,4 +14,4 @@ function view(templateName, values, response) {
 	
 }
 
-module.exports.views = views;
+module.exports.view = view;
