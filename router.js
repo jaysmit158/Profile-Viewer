@@ -1,4 +1,5 @@
 var Profile = require("./profile.js");
+var renderer = require("./renderer.js");
 
 
 var studentProfile = new Profile("chalkers");
