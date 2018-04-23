@@ -2,8 +2,6 @@ var Profile = require("./profile.js");
 var renderer = require("./renderer.js");
 var querystring = require("querystring");
 
-var studentProfile = new Profile("chalkers");
-
 var commonHeaders = { 'Content-Type': 'text/html' };
 //2. Handle HTTP route GET / AND POST / i.e. Home
 function home(request, response) {
