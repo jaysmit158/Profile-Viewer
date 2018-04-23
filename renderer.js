@@ -17,8 +17,6 @@ function view(templateName, values, response) {
 	fileContents = mergeValues(values, fileContents);
 	//Write out to the response
 	response.write(fileContents);
-
-
 	
 }
 

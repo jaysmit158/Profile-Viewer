@@ -22,11 +22,14 @@ function home(request, response) {
 
        //get the post data from body
        request.on("data", function(postBody) {
+        //extract the username
         var query = querystring.parse(postBody.toString());
-        response.write(query.username);
+        //redirect to /:username
+        response.writeHead(303,{ "Location": "/"+ query.username });
+        response.end();
        });
-       //extract the username
-  //redirect to /:username
+       
+  
     }
   }
  
