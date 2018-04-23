@@ -1,6 +1,6 @@
 var Profile = require("./profile.js");
 var renderer = require("./renderer.js");
-
+var querystring = require("querystring");
 
 var studentProfile = new Profile("chalkers");
 
@@ -10,16 +10,26 @@ function home(request, response) {
 
   //if url == "/" && GET
   if (request.url === "/") {
+    if (request.method.toLowerCase() === "get") {
     //show search
+      response.writeHead(200, commonHeaders);
+      renderer.view("header", {}, response);
+      renderer.view("search", {}, response);
+      renderer.view("footer", {}, response);
+      response.end();
+    } else {
+       // if url == "/" && POST
 
-    response.writeHead(200, commonHeaders);
-    renderer.view("header");
-    response.write("Header\n");
-    response.write("Search\n");
-    response.end("Footer\n");
-  }
-  // if url == "/" && POST
+       //get the post data from body
+       request.on("data", function(postBody) {
+        var query = querystring.parse(postBody.toString());
+        response.write(query.username);
+       });
+       //extract the username
   //redirect to /:username
+    }
+  }
+ 
 
 
 }
@@ -30,7 +40,7 @@ function user(request, response) {
   var username = request.url.replace("/", "");
   if (username.length > 0) {
     response.writeHead(200, commonHeaders);
-    response.write("Header\n");
+    renderer.view("header", {}, response);
 
     //get json from Treehouse
     var studentProfile = new Profile(username);
@@ -47,14 +57,17 @@ function user(request, response) {
           javascriptPoints: profileJSON.points.JavaScript
         }
         //Simple Response
-      response.write("User " + values.username + " has " + values.badges + " Total Badges and " + values.javascriptPoints + " Total Javascript Points.\n");
-      response.end("Footer\n");
+      renderer.view("profile", values, response);
+      renderer.view("footer", {}, response);
+      response.end();
     });
     //on "error"
     studentProfile.on("error", function(error) {
       //show error
-      response.write(error.message + "\n");
-      response.end("Footer\n");
+      renderer.view("error", {errorMessage:error.message}, response);
+      renderer.view("search", {}, response);
+      renderer.view("footer", {}, response);
+      response.end();
     });
 
 
