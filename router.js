@@ -4,7 +4,7 @@ var querystring = require("querystring");
 
 var commonHeaders = { 'Content-Type': 'text/html' };
 //2. Handle HTTP route GET / AND POST / i.e. Home
-function home(request, response) {
+const home = (request, response) => {
 
   //if url == "/" && GET
   if (request.url === "/") {
@@ -19,7 +19,7 @@ function home(request, response) {
        // if url == "/" && POST
 
        //get the post data from body
-       request.on("data", function(postBody) {
+       request.on("data",(postBody) => {
         //extract the username
         var query = querystring.parse(postBody.toString());
         //redirect to /:username
@@ -36,7 +36,7 @@ function home(request, response) {
 }
 
 //3. Handle HTTP route GET /:username ie. /chalkers
-function user(request, response) {
+const user = (request, response) => {
   //if url == "/...."
   var username = request.url.replace("/", "");
   if (username.length > 0) {
@@ -47,7 +47,7 @@ function user(request, response) {
     var studentProfile = new Profile(username);
 
     //on "end"
-    studentProfile.on("end", function(profileJSON) {
+    studentProfile.on("end", (profileJSON) => {
       //show profile
 
       //Store the values we need
@@ -63,7 +63,7 @@ function user(request, response) {
       response.end();
     });
     //on "error"
-    studentProfile.on("error", function(error) {
+    studentProfile.on("error", (error) => {
       //show error
       renderer.view("error", {errorMessage:error.message}, response);
       renderer.view("search", {}, response);

@@ -15,7 +15,7 @@ function Profile(username) {
     profileEmitter = this;
 
     //Connect to the API URL (https://teamtreehouse.com/username.json)
-    var request = https.get("https://teamtreehouse.com/" + username + ".json", function(response) {
+    var request = https.get("https://teamtreehouse.com/" + username + ".json", (response) => {
         var body = "";
 
         if (response.statusCode !== 200) {
@@ -26,12 +26,12 @@ function Profile(username) {
         }
 
         //Read the data
-        response.on('data', function (chunk) {
+        response.on('data', (chunk) => {
             body += chunk;
             profileEmitter.emit("data", chunk);
         });
 
-        response.on('end', function () {
+        response.on('end', () => {
             if(response.statusCode === 200) {
                 try {
                     //Parse the data
@@ -41,7 +41,7 @@ function Profile(username) {
                     profileEmitter.emit("error", error);
                 }
             }
-        }).on("error", function(error){
+        }).on("error", (error) =>{
             profileEmitter.emit("error", error);
         });
     });
