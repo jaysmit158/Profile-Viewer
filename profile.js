@@ -21,8 +21,7 @@ function Profile(username) {
         if (response.statusCode !== 200) {
             request.abort();
             //Status Code Error
-            profileEmitter.emit("error", new Error("There was an error getting the profile for " 
-                + username + ". (" + http.STATUS_CODES[response.statusCode] + ")"));
+            profileEmitter.emit("error", new Error(`There was an error getting the profile for "${username}". ("${http.STATUS_CODES[response.statusCode]}")`));
         }
 
         //Read the data
