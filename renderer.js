@@ -1,4 +1,4 @@
-var fs = require("fs");
+const fs = require("fs");
 
 const mergeValues = (values, content) => {
 	//Cyle over the keys

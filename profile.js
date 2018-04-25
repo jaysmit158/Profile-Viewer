@@ -1,7 +1,7 @@
-var EventEmitter = require("events").EventEmitter;
-var https = require("https");
-var http = require("http");
-var util = require("util");
+const EventEmitter = require("events").EventEmitter;
+const https = require("https");
+const http = require("http");
+const util = require("util");
 
 /**
  * An EventEmitter to get a Treehouse students profile.

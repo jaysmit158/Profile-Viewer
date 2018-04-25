@@ -1,8 +1,8 @@
-var Profile = require("./profile.js");
-var renderer = require("./renderer.js");
-var querystring = require("querystring");
+const Profile = require("./profile.js");
+const renderer = require("./renderer.js");
+const querystring = require("querystring");
 
-var commonHeaders = { 'Content-Type': 'text/html' };
+const commonHeaders = { 'Content-Type': 'text/html' };
 //2. Handle HTTP route GET / AND POST / i.e. Home
 const home = (request, response) => {
 
