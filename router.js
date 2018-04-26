@@ -51,7 +51,7 @@ const user = (request, response) => {
       //show profile
 
       //Store the values we need
-      var values = {
+      const values = {
           avatarUrl: profileJSON.gravatar_url,
           username: profileJSON.profile_name,
           badges: profileJSON.badges.length,
