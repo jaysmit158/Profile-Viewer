@@ -21,7 +21,7 @@ const home = (request, response) => {
        //get the post data from body
        request.on("data",(postBody) => {
         //extract the username
-        var query = querystring.parse(postBody.toString());
+        const query = querystring.parse(postBody.toString());
         //redirect to /:username
         response.writeHead(303,{ "Location": `/${query.username}` });
         response.end();

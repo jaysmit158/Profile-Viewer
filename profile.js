@@ -15,8 +15,8 @@ function Profile(username) {
     profileEmitter = this;
 
     //Connect to the API URL (https://teamtreehouse.com/username.json)
-    var request = https.get(`https://teamtreehouse.com/${username}.json`, (response) => {
-        var body = "";
+    const request = https.get(`https://teamtreehouse.com/${username}.json`, (response) => {
+        let body = "";
 
         if (response.statusCode !== 200) {
             request.abort();
@@ -34,7 +34,7 @@ function Profile(username) {
             if(response.statusCode === 200) {
                 try {
                     //Parse the data
-                    var profile = JSON.parse(body);
+                    const profile = JSON.parse(body);
                     profileEmitter.emit("end", profile);
                 } catch (error) {
                     profileEmitter.emit("error", error);
